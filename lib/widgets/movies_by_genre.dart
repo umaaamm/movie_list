@@ -6,6 +6,7 @@ import 'package:movie_list/model/movie.dart';
 import 'package:movie_list/model/movie_response.dart';
 import 'package:movie_list/screens/detail_screen.dart';
 import 'package:movie_list/style/theme.dart' as Style;
+import 'package:get/get.dart';
 
 class GenreMovies extends StatefulWidget {
   final int genreId;
@@ -104,13 +105,16 @@ class _GenreMoviesState extends State<GenreMovies> {
               padding: EdgeInsets.only(top: 10.0, bottom: 10.0, right: 15.0),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          MovieDetailScreen(movie: movies[index]),
-                    ),
-                  );
+                  Get.to(() => MovieDetailScreen(movie: movies[index]));
+
+                  //konvemsional navigator
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) =>
+                  //         MovieDetailScreen(movie: movies[index]),
+                  //   ),
+                  // );
                 },
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

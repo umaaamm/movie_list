@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
 import 'package:movie_list/bloc/get_movie_videos_bloc.dart';
 import 'package:movie_list/model/movie.dart';
 import 'package:movie_list/model/video.dart';
@@ -221,20 +222,31 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     return FloatingActionButton(
       backgroundColor: Style.Colors.secondColor,
       onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => VideoPlayerScreen(
-              controller: YoutubePlayerController(
-                initialVideoId: videos[0].key,
-                flags: YoutubePlayerFlags(
-                  autoPlay: true,
-                  mute: true,
-                ),
+        Get.to(
+          () => VideoPlayerScreen(
+            controller: YoutubePlayerController(
+              initialVideoId: videos[0].key,
+              flags: YoutubePlayerFlags(
+                autoPlay: true,
+                mute: true,
               ),
             ),
           ),
         );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => VideoPlayerScreen(
+        //       controller: YoutubePlayerController(
+        //         initialVideoId: videos[0].key,
+        //         flags: YoutubePlayerFlags(
+        //           autoPlay: true,
+        //           mute: true,
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // );
       },
       child: Icon(Icons.play_arrow),
     );
